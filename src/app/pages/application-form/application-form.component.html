@@ -1,0 +1,686 @@
+<div id="wrapper">
+  <div class="header bg-gradient-warning py-7 py-lg-8">
+    <div class="container">
+      <div class="header-body text-center mb-7">
+        <div class="row justify-content-center">
+          <div class="">
+            <h1 class="text-white display-1"><b>Proposal Form</b></h1>
+            <h2 class="text-white display-3">For Individual Healthcare Practitioners</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="separator separator-bottom separator-skew zindex-100">
+      <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
+        xmlns="http://www.w3.org/2000/svg">
+        <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+      </svg>
+    </div>
+  </div>
+  <!-- INFORMATION -->
+  <div class="container mt--8 pb-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-12 col-md-7">
+        <div class="card card-lift--hover bg-secondary shadow border-0">
+          <div class="card-body px-lg-5 py-lg-5">
+            <h1>Instructions to the Applicant</h1>
+            <div class="container text-justify mt-4">
+              <ol>
+                <li>
+                  This form is intended for <b>individual healthcare practitioners</b>. These include, but are not
+                  limited to, physicians, surgeons, dentists, pharmacists, physician assistants, nurses and other allied
+                  health and therapeutic care practitioners.
+                </li>
+                <li>
+                  You must answer <b>all</b> the questions in this form. If a question is not applicable, state
+                  <b>"N/A"</b>. If more space is required to answer a question, continue on your letterhead.
+                </li>
+                <li>
+                  If you have any questions concerning this proposal, please contact your Takaful adviser to discuss.
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /INFORMATION -->
+
+  <form ngNativeValidate [formGroup]="applicantForm" (ngSubmit)="addApplicant()">
+    <!-- Application for Takaful Cover -->
+    <div class="container mb-5">
+      <h1 class="text-warning display-2">Application for Takaful Cover</h1>
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-7">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-body px-lg-5 py-lg-5">
+              <ol>
+                <p class="text-warning"><b>Choose either Period of Takaful or Limit of Liability Required.</b></p>
+                <li>
+                  <h2>Period of Takaful: <b class="text-danger">*</b></h2>
+                </li>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <div class="input-group input-group-alternative" ngbTooltip="Auto set for one year.">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">From:</span>
+                        </div>
+                        <input class="form-control datepicker" placeholder="From" name="dateFrom" id="dateFrom"
+                          #dateFrom formControlName="dateFrom" type="date" (change)="setOneYear()" [required]="true" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">To:</span>
+                        </div>
+                        <input class="form-control datepicker" placeholder=" dd/mm/yyyy" name="dateTo" id="dateTo"
+                          #dateTo formControlName="dateTo" type="text" [readonly]="true" [required]="true" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-right mb-3">
+                  <a href="javascript:void(0)" class="btn-sm btn btn-warning" (click)="resetDate()">Clear Date</a>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <li>
+                      <h2>Limit of Liability Required: <b class="text-danger">*</b></h2>
+                    </li>
+                    <div class="form-group">
+                      <div class="input-group input-group-alternative">
+                        <select name="limit" id="limit" class="form-control form-control-alternative" #limit
+                          [required]="true">
+                          <option value="" selected disabled>Select</option>
+                          <option value="250000">RM250,000.00</option>
+                          <option value="500000">RM500,000.00</option>
+                          <option value="1000000">RM1,000,000.00</option>
+                          <option value="1500000">RM1,500,000.00</option>
+                          <option value="2000000">RM2,000,000.00</option>
+                          <option value="3000000">RM3,000,000.00</option>
+                          <option value="5000000">RM5,000,000.00</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <li>
+                      <h2>Retroactive Date: <b class="text-danger">*</b></h2>
+                    </li>
+                    <div class="form-group">
+                      <div class="input-group input-group-alternative"
+                        ngbTooltip="*6 years from inception date or as per expiring (please provide expiring policy)">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Retroactive Date:</span>
+                        </div>
+                        <input class="form-control datepicker" placeholder="Retroactive Date" name="dateRetroactive"
+                          id="dateRetroactive" #dateRetroactive formControlName="dateRetroactive" type="date"
+                          [required]="true" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Application for Takaful Cover -->
+
+    <!-- 1. Details of Applicant -->
+    <div class="container mb-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-7">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-body px-lg-5 py-lg-5">
+              <h1 class="mb-5">1. Details of Applicant</h1>
+              <!-- Name -->
+              <div class="row">
+                <div class="col-lg-3">
+                  <h2>Name <b class="text-danger">*</b></h2>
+                </div>
+                <div class="col-lg-9">
+                  <div class="form-group">
+                    <input type="text" name="applicantName" id="applicantName"
+                      class="form-control form-control-alternative" placeholder="Name" #applicantName
+                      formControlName="applicantName" [required]="true">
+                  </div>
+                </div>
+              </div>
+              <!-- NRIC -->
+              <div class="row">
+                <div class="col-lg-3">
+                  <h2>NRIC <b class="text-danger">*</b></h2>
+                </div>
+                <div class="col-lg-9">
+                  <div class="form-group">
+                    <input type="number" min="1" name="applicantIc" id="applicantIc"
+                      class="form-control form-control-alternative" placeholder="NRIC e.g: 010203041111" #applicantIc
+                      formControlName="applicantIc" [required]="true">
+                  </div>
+                </div>
+              </div>
+              <!-- Gender -->
+              <div class="row">
+                <div class="col-lg-3">
+                  <h2>Gender <b class="text-danger">*</b></h2>
+                </div>
+                <div class="col-lg-9">
+                  <div class="form-group">
+                    <select name="applicantGender" id="applicantGender" class="form-control form-control-alternative"
+                      #applicantGender [required]="true">
+                      <option value="" selected disabled>Select</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!-- Correspondence address -->
+              <div class="row">
+                <div class="col-lg-3">
+                  <h2>Correspondence address <b class="text-danger">*</b></h2>
+                </div>
+                <div class="col-lg-9">
+                  <div class="form-group">
+                    <textarea name="applicantCorrespondenceAddress" id="applicantCorrespondenceAddress"
+                      class="form-control form-control-alternative" rows="4" placeholder="Correspondence address"
+                      #applicantCorrespondenceAddress formControlName="applicantCorrespondenceAddress"
+                      [required]="true"></textarea>
+                  </div>
+                </div>
+              </div>
+              <!-- Primary practice location -->
+              <div class="row">
+                <div class="col-lg-3">
+                  <h2>Primary practice location <b class="text-danger">*</b></h2>
+                </div>
+                <div class="col-lg-9">
+                  <div class="form-group">
+                    <textarea name="applicantPrimaryPracticeLocation" id="applicantPrimaryPracticeLocation"
+                      class="form-control form-control-alternative" rows="4" placeholder="Primary practice location"
+                      #applicantPrimaryPracticeLocation formControlName="applicantPrimaryPracticeLocation"
+                      [required]="true"></textarea>
+                  </div>
+                </div>
+              </div>
+              <!-- Contact phone number -->
+              <div class="row">
+                <div class="col-lg-3">
+                  <h2>Phone number <b class="text-danger">*</b></h2>
+                </div>
+                <div class="col-lg-9">
+                  <div class="form-group">
+                    <input type="number" min="1" name="applicantPhoneNumber" id="applicantPhoneNumber"
+                      class="form-control form-control-alternative" placeholder="Contact phone number"
+                      #applicantPhoneNumber formControlName="applicantPhoneNumber" [required]="true">
+                  </div>
+                </div>
+              </div>
+              <!-- Email address -->
+              <div class="row">
+                <div class="col-lg-3">
+                  <h2>Email address <b class="text-danger">*</b></h2>
+                </div>
+                <div class="col-lg-9">
+                  <div class="form-group">
+                    <input type="email" name="applicantEmail" id="applicantEmail"
+                      class="form-control form-control-alternative" placeholder="Email" #applicantEmail
+                      formControlName="applicantEmail" [required]="true">
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <h2 class="mb-5">Please provide the details of your registration below:</h2>
+              <!-- Licensing / Registration Body -->
+              <div class="row">
+                <div class="col-lg-3">
+                  <h2>Licensing / Registration Body <b class="text-danger">*</b></h2>
+                </div>
+                <div class="col-lg-9">
+                  <div class="form-group">
+                    <input type="text" name="applicantLicensing" id="applicantLicensing"
+                      class="form-control form-control-alternative" placeholder="Licensing / Registration Body"
+                      #applicantLicensing formControlName="applicantLicensing" [required]="true">
+                  </div>
+                </div>
+              </div>
+              <!-- Registration Number -->
+              <div class="row">
+                <div class="col-lg-3">
+                  <h2>Registration Number <b class="text-danger">*</b></h2>
+                </div>
+                <div class="col-lg-9">
+                  <div class="form-group">
+                    <input type="text" name="applicantRegistrationNumber" id="applicantRegistrationNumber"
+                      class="form-control form-control-alternative" placeholder="Registration Number"
+                      #applicantRegistrationNumber formControlName="applicantRegistrationNumber" [required]="true">
+                  </div>
+                </div>
+              </div>
+              <!-- Registration Date -->
+              <div class="row">
+                <div class="col-lg-3">
+                  <h2>Registration Date <b class="text-danger">*</b></h2>
+                </div>
+                <div class="col-lg-9">
+                  <div class="form-group">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Registration Date:</span>
+                      </div>
+                      <input class="form-control datepicker" placeholder="Registration Date" name="dateRegistration"
+                        id="dateRegistration" #dateRegistration formControlName="dateRegistration" type="date"
+                        [required]="true" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Date of first Registration -->
+              <div class="row">
+                <div class="col-lg-3">
+                  <h2>Date of first Registration <b class="text-danger">*</b></h2>
+                </div>
+                <div class="col-lg-9">
+                  <div class="form-group">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Date of first Registration</span>
+                      </div>
+                      <input class="form-control datepicker" placeholder="Date of first Registration"
+                        name="dateFirstRegistration" id="dateFirstRegistration" #dateFirstRegistration type="date"
+                        [required]="true" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /1. Details of Applicant -->
+
+    <!-- 2. Details of Healthcare Services Business -->
+    <div class="container mb-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-7">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-body px-lg-5 py-lg-5">
+              <h1>2. Details of Healthcare Services/Business
+                <span>
+                  <button ngbTooltip="Check Medical Status Price" (click)="gotoCalculator()"
+                    class="btn btn-warning btn-icon-only rounded-circle text-white">
+                    <i class="fas fa-calculator"></i>
+                  </button>
+                </span>
+              </h1>
+              <p class="mb-1">Please indicate your classification of work performed.</p>
+              <p class="mb-5">Insert percentage (%) of
+                Healthcare
+                Services/Business <b class="text-danger">(Total
+                  percentage cannot exceed 100%)</b></p>
+              <div class="form-group mb-5">
+                <select name="msList" id="msList" class="form-control form-control-alternative" #msList
+                  (change)="selectMedicalStatus()" onfocus='if(this.options.length > 8){ this.size = 8; }'
+                  onblur='this.size=1;' onchange='this.size=1; this.blur();'
+                  ngbTooltip="Example: Medical Assistant=90%, Nurses=10%">
+                  <option value="*" selected disabled>Add</option>
+                  <option *ngFor="let ms of medicalStatusList; let i=index" [attr.data-index]="i" [value]="ms.$key"
+                    ngbTooltip="{{ms.description}}">
+                    {{ms.specialisation}} {{ms.status}}
+                  </option>
+                </select>
+              </div>
+              <div class="col-lg-12">
+                <div class="row">
+                  <div class="col-lg-4 mb-4" *ngFor="let ms of medicalStatusListSelected; let i=index"
+                    [attr.data-index]="i">
+                    <div class="row" ngbTooltip="{{ms.description}}" id="medical-status-{{ms.$key}}">
+                      <div class="col-lg-4">
+                        <h5>{{ms.specialisation}}</h5>
+                        <h6 class="text-warning"><b>{{ms.category?.split('|')[1]}}</b></h6>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <input type="number" id="ms_{{i}}" class="form-control form-control-alternative"
+                            placeholder="%" min="1" max="100" step="1" [required]="true">
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <a class="btn btn-warning btn-icon-only rounded-circle" href="javascript:void(0)"
+                          (click)="removeMedicalStatus(ms.$key)"><span class="btn-inner--icon">
+                            <i class="ni ni-fat-remove"></i></span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /2. Details of Healthcare Services Business -->
+
+    <!-- 3. Takaful History -->
+    <div class="container mb-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-7">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-body px-lg-5 py-lg-5">
+              <h1 class="mb-5">3. Takaful History</h1>
+              <ol type="a" class="text-justify">
+                <li>
+                  <div class="row mb-4">
+                    <div class="col-lg-9">
+                      <h4>Do you currently hold medical malpractice Takaful? If YES, please provide details. <b
+                          class="text-danger">*</b></h4>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <input type="radio" name="history1" id="history1" value="Yes" formControlName="history1"
+                            [required]="true" (change)="getHistory1('Yes')">
+                          <label>Yes</label>
+                        </div>
+                        <div class="col-lg-6">
+                          <input type="radio" name="history1" id="history1" value="No" formControlName="history1"
+                            (change)="getHistory1('No')">
+                          <label>No</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="row">
+                    <div class="col-lg-9">
+                      <h4>Have you ever had any application for medical malpractice Takaful refused, or had any medical
+                        malpractice Takaful coverage rescinded or cancelled? If YES, please provide details on a
+                        separate sheet, noting the Section number. <b class="text-danger">*</b></h4>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <input type="radio" name="history2" id="history2" value="Yes" formControlName="history2"
+                            [required]="true" (change)="getHistory2('Yes')">
+                          <label>Yes</label>
+                        </div>
+                        <div class="col-lg-6">
+                          <input type="radio" name="history2" id="history2" value="No" formControlName="history2"
+                            (change)="getHistory2('No')">
+                          <label>No</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /3. Takaful History -->
+
+    <!-- 4. Claims Experience -->
+    <div class="container mb-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-7">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-body px-lg-5 py-lg-5">
+              <h1 class="mb-5">4. Claims Experience</h1>
+              <ol type="a" class="text-justify">
+                <li>
+                  <div class="row mb-4">
+                    <div class="col-lg-9">
+                      <h4>Have any claims ever been made, or lawsuits been brought against you? <b
+                          class="text-danger">*</b></h4>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <input type="radio" name="experience1" id="experience1" value="Yes"
+                            formControlName="experience1" [required]="true" (change)="getExperience1('Yes')">
+                          <label>Yes</label>
+                        </div>
+                        <div class="col-lg-6">
+                          <input type="radio" name="experience1" id="experience1" value="No"
+                            formControlName="experience1" (change)="getExperience1('No')">
+                          <label>No</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="row mb-4">
+                    <div class="col-lg-9">
+                      <h4>Are you aware of any errors, omissions, offences, circumstances or allegations which might
+                        result in a claim being made against you? <b class="text-danger">*</b></h4>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <input type="radio" name="experience2" id="experience2" value="Yes"
+                            formControlName="experience2" [required]="true" (change)="getExperience2('Yes')">
+                          <label>Yes</label>
+                        </div>
+                        <div class="col-lg-6">
+                          <input type="radio" name="experience2" id="experience2" value="No"
+                            formControlName="experience2" (change)="getExperience2('No')">
+                          <label>No</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="row mb-4">
+                    <div class="col-lg-9">
+                      <h4>Have you ever been the subject of disciplinary action or investigation by any authority or
+                        regulator or professional body? <b class="text-danger">*</b></h4>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <input type="radio" name="experience3" id="experience3" value="Yes"
+                            formControlName="experience3" [required]="true" (change)="getExperience3('Yes')">
+                          <label>Yes</label>
+                        </div>
+                        <div class="col-lg-6">
+                          <input type="radio" name="experience3" id="experience3" value="No"
+                            formControlName="experience3" (change)="getExperience3('No')">
+                          <label>No</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="row mb-4">
+                    <div class="col-lg-9">
+                      <h4>Have you ever been the subject of a criminal investigation or had criminal charges brought
+                        against you? For the purposes of this question, please disregard traffic or minor motor vehicle
+                        licensing offences. <b class="text-danger">*</b></h4>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <input type="radio" name="experience4" id="experience4" value="Yes"
+                            formControlName="experience4" [required]="true" (change)="getExperience4('Yes')">
+                          <label>Yes</label>
+                        </div>
+                        <div class="col-lg-6">
+                          <input type="radio" name="experience4" id="experience4" value="No"
+                            formControlName="experience4" (change)="getExperience4('No')">
+                          <label>No</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ol>
+              <hr>
+              <div id="detailsInfo">
+                <h5 class="mb-4">
+                  If you had answered Yes to any of the questions in this section, please <b>provide full details
+                    overleaf</b> and the <b>status</b> of each claim, lawsuits, allegation or matter, including:
+                </h5>
+                <h5 class="mb-4">
+                  <ul>
+                    <li>the date of the claim, suit or allegation</li>
+                    <li>the date you notified your previous Takaful Operators</li>
+                    <li>the name of the claimant(s) and the services rendered</li>
+                    <li>the allegations made against you</li>
+                    <li>the amount claimed by the claimant(s)</li>
+                    <li>whether the status is outstanding or finalised</li>
+                    <li>the amounts paid for claims and defence costs to date</li>
+                  </ul>
+                </h5>
+                <h4 class="mb-5">
+                  <b>Please email all the details at <a href="javascript:void(0)" (click)="mailto()"
+                      ngbTooltip="This email also can be found at home page.">{{about.email}}</a>.
+                    You are
+                    allowed to email the details after submitted the form. <span class="text-danger">*</span></b>
+                </h4>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 mb-4">
+                  <button type="button" class="btn btn-warning w-100" (click)="gotoDocSample(about.link2)">Medical
+                    Document
+                    Sample</button>
+                </div>
+                <div class="col-lg-6">
+                  <button type="button" class="btn btn-warning w-100" (click)="gotoFormSample(about.link3)">Medical Form
+                    Sample</button>
+                </div>
+              </div>
+              <hr>
+              <h1 class="mb-5"><b>Declaration</b></h1>
+              <div class="row">
+                <div class="col-lg-1">
+                  <input type="checkbox" id="confirm1" name="confirm1" [required]="true">
+                </div>
+                <div class="col-lg-11">
+                  <h5>
+                    I acknowledge that I have read, understood and agreed with the
+                    <a href="javascript:void(0)" (click)="open(classic1,'' , '')">
+                      <b>terms and conditions</b>
+                    </a>.
+                  </h5>
+                </div>
+              </div>
+              <ng-template #classic1 let-c="close" let-d="dismiss">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-title-default">Declaration</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                      (click)="d('Cross click')">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <ul class="text-justify">
+                      <li class="mb-3">
+                        I have read and understood the Important Notices contained in this application.
+                      </li>
+                      <li class="mb-3">
+                        I agree that this proposal, together with any other information or documents supplied, will
+                        form the basis of any
+                        contract of Takaful.
+                      </li>
+                      <li class="mb-3">
+                        I acknowledge that if this application is accepted, the contract of Takaful will be subject to
+                        the terms and conditions as
+                        set out in the certificate wording as issued or as otherwise specifically varied in writing by
+                        STMB.
+                      </li>
+                      <li class="mb-3">
+                        I declare, after inquiry, that the statements, particulars and information contained in this
+                        application and in any
+                        documents accompanying this application are true and correct in every detail and that no other
+                        material facts have
+                        been misstated, suppressed or omitted.
+                      </li>
+                      <li class="mb-3">
+                        I undertake to inform STMB of any material alteration to those facts before completion of the
+                        contract of Takaful.
+                      </li>
+                      <li class="mb-3">
+                        We understand that STMB needs to deal with our personal data to administer our Policy and
+                        offer us Takaful
+                        products and services. To achieve these purposes, We allow STMB to collect, use and disclose
+                        our personal data to
+                        selected third parties in or outside Malaysia, in accordance with STMB’s Personal Data
+                        Protection Notice, which is
+                        found in STMB website at <a href="javascript:void(0)"
+                          (click)="gotoWeb()">http://www.takaful-malaysia.com.my</a>. We may contact STMB for access
+                        to
+                        or correction of
+                        our personal data, or for any other queries or complaints.
+                      </li>
+                      <li class="mb-3">
+                        <i>
+                          Kami faham bahawa STMB perlu berurusan dengan data peribadi kami untuk mentadbir Polisi kami
+                          dan menawarkan kami produk dan perkhidmatan insurans. Untuk mencapai tujuan-tujuan ini, kami
+                          membenarkan STMB untuk mengumpul, mengguna dan memberi data
+                          peribadi kami kepada pihak ketiga terpilih yang terletak di dalam atau di luar Malaysia,
+                          selaras dengan Notis Perlindungan Data Peribadi STMB, yang terdapat dalam laman web STMB di
+                          <a href="javascript:void(0)" (click)="gotoWeb()">http://www.takaful-malaysia.com.my</a>.
+                          Kami
+                          boleh menghubungi STMB untuk mendapatkan atau
+                          membetulkan data peribadi kami,
+                          atau untuk sebarang pertanyaan atau aduan.
+                        </i>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal"
+                      (click)="c('Close click')">Close</button>
+                  </div>
+                </div>
+              </ng-template>
+              <div class="row mb-4">
+                <div class="col-lg-1">
+                  <input type="checkbox" id="confirm2" name="confirm2" [required]="true">
+                </div>
+                <div class="col-lg-11">
+                  <h5>
+                    This form must be reviewed, signed and dated by a duly authorised Principal, Partner or Director.
+                    The authorised person who signs on behalf of the Proposer further confirms to STMB that he or she is
+                    authorised to do so.
+                  </h5>
+                </div>
+              </div>
+              <div class="mb-4 col-lg-12">
+                <re-captcha (resolved)="resolved($event)" siteKey="6LeEhKAcAAAAANZ-oNpU5zHPYPWKLtHqZ1emik-2">
+                </re-captcha>
+              </div>
+            </div>
+            <div class="col-lg-12 text-center" *ngIf="errorStatus">
+              <div id="error" class="alert alert-danger" role="alert">
+                <!-- error message -->
+                <strong>Warning! </strong>{{errorMsg}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /4. Claims Experience -->
+    <div class="text-right container mt-5">
+      <button class="btn btn-secondary" (click)="gotoInstruction()">Back</button>
+      <input class="btn btn-warning" type="submit" value="Submit">
+    </div>
+  </form>
+</div>

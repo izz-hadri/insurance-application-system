@@ -1,0 +1,381 @@
+<div class="page">
+  <h1 class="text-center mb-5"><b>STMAB Medical Malpractice Takaful</b></h1>
+  <table class="text-justify">
+    <tr>
+      <td>
+
+        <img src="assets/img/takaful-logo.png">
+      </td>
+      <td style="width: 100%; vertical-align:top">
+        <h5>
+          Proposal Form
+          <br>
+          For Individual Healthcare Practitioners
+          <br><br>
+          Important Notices to the Applicants
+          <hr>
+          <b>Your Duty of Disclosure</b>
+          <br><br>
+          Before you enter into a contract of general Takaful with the Takaful Operator, you have a
+          duty to disclose to the Takaful Operator every matter within your knowledge that is
+          material to the Takaful Operator’s decision whether to accept the risk of the Takaful and,
+          if so, on what terms.
+          <br><br>
+          You have the same duty to disclose those matters to the Takaful Operator before you
+          renew, extend, vary or reinstate a contract of general Takaful. Your duty of disclosure continues
+          after the application has been completed up until the contract of Takaful is entered into.
+          <br><br>
+          It is important that all information contained in this application is understood by you
+          and is correct, as you will be bound by your answers and by the information provided by
+          you in this application. You should obtain advice before you sign this applicaton if you
+          do not properly understand any part of it.
+          <br><br>
+          Your duty of disclosure continues after the application has been completed up until the
+          contract of Takaful is entered into.
+          <br><br>
+          <b>Non-Disclosure:</b><br>
+          If you fail to comply with your duty of disclosure, the Takaful Operator may have the
+          option of avoiding the contract of Takaful from its beginning.
+          <br><br>
+          If your non-disclosure is fraudulent, the Takaful Operator may also have the right to
+          keep the premium that you have paid.
+          <br><br>
+          <b>Change of Risk or Circumstances:</b><br>
+          You should advise STMB as soon as practicable of any change to your normal business as
+          disclosed in this application, such as changes in business activities, location, acquisitions
+          and new overseas activities.
+          <br><br>
+          <b>Subrogation</b>
+          <br><br>
+          Where you have agreed with another person or company ( who would otherwise be liable
+          to compensate you for any loss or damage which is covered by the contract of Takaful)
+          that you will not seek to recover such loss or damage from that person, STMB will not
+          cover you, to the extent permitted by law, for such loss or damage.
+        </h5>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="page">
+  <div class="text-justify">
+    <h5>
+      <b>Instructions to the Applicant</b>
+      <hr>
+      <ol type="A">
+        <li>
+          This form is intended for <b>individual healthcare practitioners</b>. These include, but are not limited to,
+          physicians, surgeons, dentists, pharmacists, physician assistants, nurses and other allied health and
+          therapeutic care practitioners.
+        </li>
+        <li>
+          You must answer all the questions in this form. If a question is not applicable, state "N/A". If more space is
+          required to answer a question, continue on your letterhead.
+        </li>
+        <li>
+          If you have any questions concerning this proposal, please contact your Takaful adviser to discuss.
+        </li>
+      </ol>
+      <br>
+      <b>Application for Takaful Cover</b>
+      <hr>
+      <table id="customers">
+        <tr>
+          <th>
+            Period of Takaful
+          </th>
+          <td>
+            From: {{toDate(applicant.dateFrom)}}
+          </td>
+          <td>
+            To: {{applicant.dateTo}}
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Limit of Liability Required
+          </th>
+          <td colspan="2">
+            RM{{applicant.limit}}
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Retroactive Date* <br>
+            <h6>
+              *6 years from inception date or
+              <br>
+              as per expiring (please provide expiring policy)
+            </h6>
+          </th>
+          <td colspan="2">
+            {{toDate(applicant.dateRetroactive)}}
+          </td>
+        </tr>
+      </table>
+      <br><br>
+      <b>1. Details of Applicant</b>
+      <hr>
+      <table id="customers">
+        <tr>
+          <th>1.1 Name</th>
+          <td>{{applicant.applicantName}}</td>
+        </tr>
+        <tr>
+          <th>1.2 NRIC</th>
+          <td>{{applicant.applicantIc}}</td>
+        </tr>
+        <tr>
+          <th>1.3 Gender</th>
+          <td>{{applicant.applicantGender}}</td>
+        </tr>
+        <tr>
+          <th>1.4 Correspondence address</th>
+          <td>{{applicant.applicantCorrespondenceAddress}}</td>
+        </tr>
+        <tr>
+          <th>1.5 Primary practice location</th>
+          <td>{{applicant.applicantPrimaryPracticeLocation}}</td>
+        </tr>
+        <tr>
+          <th>1.6 Contact phone number</th>
+          <td>{{applicant.applicantPhoneNumber}}</td>
+        </tr>
+        <tr>
+          <th>1.7 Email address</th>
+          <td>{{applicant.applicantEmail}}</td>
+        </tr>
+        <tr>
+          <th colspan="2">1.8 Please provide the details of your registration below:</th>
+        </tr>
+        <tr>
+          <th>&nbsp;&nbsp;&nbsp;(a) Licensing / Registration Body :</th>
+          <td>{{applicant.applicantLicensing}}</td>
+        </tr>
+        <tr>
+          <th>&nbsp;&nbsp;&nbsp;(b) Registration Number :</th>
+          <td>{{applicant.applicantRegistrationNumber}}</td>
+        </tr>
+        <tr>
+          <th>&nbsp;&nbsp;&nbsp;(c) Registration Date : </th>
+          <td>{{toDate(applicant.dateRegistration)}}</td>
+        </tr>
+        <tr>
+          <th>&nbsp;&nbsp;&nbsp;(d) Date of first Registration :</th>
+          <td>{{toDate(applicant.dateFirstRegistration)}}</td>
+        </tr>
+      </table>
+    </h5>
+  </div>
+</div>
+<div class="page">
+  <div class="text-justify">
+    <h5>
+      <b>2. Details of Healthcare Services Business</b>
+      <hr>
+      <table id="customers">
+        <tr>
+          <td colspan="4">2.1 Please indicate your classification of work performed below:</td>
+        </tr>
+        <tr>
+          <th>Specialisation</th>
+          <th>Category</th>
+          <th>Status</th>
+          <th>Percentage (%)</th>
+        </tr>
+        <tr *ngFor="let ams of applicant_medicalStatusList">
+          <td>
+            {{getSpecialisation(ams.medicalStatusId)}}
+          </td>
+          <td>
+            {{getCategory(ams.medicalStatusId)}}
+          </td>
+          <td>
+            {{getStatus(ams.medicalStatusId)}}
+          </td>
+          <td>
+            {{ams.percentage}}
+          </td>
+        </tr>
+      </table>
+    </h5>
+  </div>
+</div>
+<div class="page">
+  <div class="text-justify">
+    <h5>
+      <b>3. Takaful History</b>
+      <hr>
+      <table id="customers">
+        <tr>
+          <td>
+            3.1
+          </td>
+          <td>
+            Do you currently hold medical malpractice Takaful?
+            If YES, please provide details.
+          </td>
+          <td>
+            {{applicant.history1}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            3.2
+          </td>
+          <td>
+            Have you ever had any application for medical malpractice Takaful refused, or
+            had any medical malpractice Takaful coverage rescinded or cancelled?
+            If YES, please provide details on a separate sheet, noting the Section number
+          </td>
+          <td>
+            {{applicant.history2}}
+          </td>
+        </tr>
+      </table>
+      <br><br>
+      <b>4. Claims Experience</b>
+      <hr>
+      <table id="customers">
+        <tr>
+          <td>
+            4.1
+          </td>
+          <td>
+            Have any claims ever been made, or lawsuits been brought against you?
+          </td>
+          <td>
+            {{applicant.experience1}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            4.2
+          </td>
+          <td>
+            Are you aware of any errors, omissions, offences, circumstances or allegations
+            which might result in a claim being made against you?
+          </td>
+          <td>
+            {{applicant.experience2}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            4.3
+          </td>
+          <td>
+            Have you ever been the subject of disciplinary action or investigation by any
+            authority or regulator or professional body?
+          </td>
+          <td>
+            {{applicant.experience3}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            4.4
+          </td>
+          <td>
+            Have you ever been the subject of a criminal investigation or had criminal
+            charges brought against you? For the purposes of this question, please disregard
+            traffic or minor motor vehicle licensing offences.
+          </td>
+          <td>
+            {{applicant.experience4}}
+          </td>
+        </tr>
+      </table>
+      <br>
+      If you had answered Yes to any of the questions in this section, please <b>provide full details overleaf</b> and
+      the <b>status</b>
+      of each claim, lawsuits, allegation or matter, including
+      <br><br>
+      <ul>
+        <li>
+          the date of the claim, suit or allegation
+        </li>
+        <li>
+          the date you notified your previous Takaful Operators
+        </li>
+        <li>
+          the name of the claimant(s) and the services rendered
+        </li>
+        <li>
+          the allegations made against you
+        </li>
+        <li>
+          the amount claimed by the claimant(s)
+        </li>
+        <li>
+          whether the status is outstanding or finalised
+        </li>
+        <li>
+          the amounts paid for claims and defence costs to date
+        </li>
+      </ul>
+      <hr>
+    </h5>
+  </div>
+</div>
+<div class="page">
+  <div class="text-justify">
+    <h5>
+      <b>Declaration & Signature</b>
+      <hr>
+      <ul>
+        <li>
+          I have read and understood the Important Notices contained in this application.
+        </li>
+        <li>
+          I agree that this proposal, together with any other information or documents supplied, will form the basis of
+          any
+          contract of Takaful.
+        </li>
+        <li>
+          I acknowledge that if this application is accepted, the contract of Takaful will be subject to the terms and
+          conditions as
+          set out in the certificate wording as issued or as otherwise specifically varied in writing by STMB.
+        </li>
+        <li>
+          I declare, after inquiry, that the statements, particulars and information contained in this application and
+          in any
+          documents accompanying this application are true and correct in every detail and that no other material facts
+          have
+          been misstated, suppressed or omitted.
+        </li>
+        <li>
+          I undertake to inform STMB of any material alteration to those facts before completion of the contract of
+          Takaful.
+        </li>
+        <li>
+          We understand that STMB needs to deal with our personal data to administer our Policy and offer us Takaful
+          products and services. To achieve these purposes, We allow STMB to collect, use and disclose our personal data
+          to
+          selected third parties in or outside Malaysia, in accordance with STMB’s Personal Data Protection Notice,
+          which is
+          found in STMB website at http://www.takaful-malaysia.com.my. We may contact STMB for access to or correction
+          of
+          our personal data, or for any other queries or complaints. /<i>Kami faham bahawa STMB perlu berurusan dengan
+            data peribadi kami untuk mentadbir Polisi kami dan menawarkan kami produk dan perkhidmatan insurans.Untuk
+            mencapai tujuan-tujuan ini, kami membenarkan STMB untuk mengumpul, mengguna dan memberi data
+            peribadi kami kepada pihak ketiga terpilih yang terletak di dalam atau di luar Malaysia, selaras dengan
+            Notis
+            Perlindungan Data Peribadi STMB, yang terdapat dalam laman web STMB di http://www.takafulmalaysia.com.my.
+            Kami boleh menghubungi STMB untuk mendapatkan atau membetulkan data peribadi kami,
+            atau untuk sebarang pertanyaan atau aduan.
+          </i>
+        </li>
+      </ul>
+      <br>
+      This form must be reviewed, signed and dated by a duly authorised Principal, Partner or Director. The authorised
+      person who signs on behalf of the Proposer further confirms to STMB that he or she is authorised to do so.
+      <br><br><br><br>
+      <table id="customers">
+        <tr>
+          <th><b>Signature:</b><br><br><br><br><br><br></th>
+          <th><b>Title of signatory:</b><br><br><br><br><br><b>Date: </b>{{applicant.createdAt.slice(-10)}}</th>
+        </tr>
+      </table>
+    </h5>
+  </div>
+</div>

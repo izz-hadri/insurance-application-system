@@ -1,0 +1,80 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+  style="min-height: 450px; background-image: url(assets/img/profile-cover1.jpg); background-size: cover; background-position: center top;">
+  <span class="mask bg-gradient-danger opacity-8"></span>
+  <div class="container-fluid d-flex align-items-center">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="display-1 text-white">Medical Status <b>List</b></h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MEDICAL STATUS LIST -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row">
+            <div class="col-lg-6">
+              <input type="text" name="search" id="search" class="form-control form-control-alternative"
+                placeholder="Search" (keyup)="searchAny()">
+            </div>
+            <div class="col-lg-6 text-right">
+              <button class=" btn btn-outline-primary btn-icon-only rounded-circle" type="button" placement="top"
+                ngbTooltip="Add Medical Status" (click)="gotoAdd()">
+                <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table id="myTable" class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr id='tableHeader'>
+                <th>Specialisation</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let ms of medicalStatusList">
+                <td>
+                  <div>
+                    <b ngbTooltip="Last Update: {{ms.updatedAt?.split(' ')[1]}}">{{ms.specialisation}}</b>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    {{ms.status}}
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <button class=" btn btn-outline-info btn-icon-only rounded-circle" type="button" placement="top"
+                      ngbTooltip="View Details" (click)="gotoUpdate(ms)">
+                      <span class="btn-inner--icon"><i class="fas fa-info"></i></span>
+                    </button>
+                    <button class="btn btn-outline-warning btn-icon-only rounded-circle" type="button" placement="top"
+                      ngbTooltip="Delete" (click)='deleteMedicalStatus(ms)'>
+                      <span class="btn-inner--icon"><i class="ni ni-fat-delete"></i></span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer py-4 text-right">
+          <button class=" btn btn-outline-primary btn-icon-only rounded-circle" type="button" placement="bottom"
+            ngbTooltip="Add Medical Status" (click)="gotoAdd()">
+            <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /MEDICAL STATUS LIST -->

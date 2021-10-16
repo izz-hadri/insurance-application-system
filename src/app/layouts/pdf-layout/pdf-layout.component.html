@@ -1,0 +1,65 @@
+<nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark bg-dark">
+  <div class="container px-4">
+    <img class="navbar-brand" src="assets/img/logo-white.png" />
+    <button class="navbar-toggler" type="button" (click)="isCollapsed=!isCollapsed"
+      aria-controls="sidenav-collapse-main">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" [ngbCollapse]="isCollapsed" id="sidenav-collapse-main">
+      <!-- Collapse header -->
+      <div class="navbar-collapse-header d-md-none">
+        <div class="row">
+          <div class="col-6 collapse-brand">
+            <img src="assets/img/logo.png">
+          </div>
+          <div class="col-6 collapse-close">
+            <button type="button" class="navbar-toggler" (click)="isCollapsed=!isCollapsed">
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Navbar items -->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href="javascript:void(0)" class="nav-link nav-link-icon" (click)="goto(1)">
+            <i class="fas fa-home"></i>
+            <span class="nav-link-inner--text">Home</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="javascript:void(0)" class="nav-link nav-link-icon" (click)="goto(2)">
+            <i class="fas fa-calculator"></i>
+            <span class="nav-link-inner--text">Calculator</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="javascript:void(0)" class="nav-link nav-link-icon" (click)="goto(3)">
+            <i class="ni ni-single-copy-04"></i>
+            <span class="nav-link-inner--text">Apply</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="javascript:void(0)" class="nav-link nav-link-icon" (click)="goto(4)">
+            <i class="ni ni-books"></i>
+            <span class="nav-link-inner--text">Info</span>
+          </a>
+        </li>
+        <li *ngIf="isAdmin" class="nav-item">
+          <a href="javascript:void(0)" class="btn btn-warning btn-icon ml-sm-3 d-none d-md-block" (click)="gotoAdmin()">
+            <span class="btn-inner--icon"><i class="ni ni-circle-08"></i></span>
+            <span class="nav-link-inner--text"> Back</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-neutral btn-icon ml-sm-3 d-none d-md-block" href="javascript:void(0)" (click)="printPdf()">
+            <span class="btn-inner--icon"><i class="fas fa-download mr-2"></i></span>
+            <span class="nav-link-inner--text">Download PDF</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>

@@ -1,0 +1,156 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+  style="min-height: 450px; background-image: url(assets/img/profile-cover2.jpg); background-size: cover; background-position: center top;">
+  <span class="mask bg-gradient-danger opacity-8"></span>
+  <div class="container-fluid d-flex align-items-center">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="display-1 text-white">Medical Status <b>Details</b></h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-xl-12">
+      <form ngNativeValidate [formGroup]="medicalStatusForm" #msForm="ngForm" (ngSubmit)="updateMedicalStatus()">
+        <div class="card bg-secondary shadow">
+          <div class="card-header bg-white border-0">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <h3 class="mb-0">Medical Status <b>Details</b></h3>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h6 class="heading-small text-muted mb-4">Information</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Specialisation <b class="text-danger">*</b></label>
+                    <input type="text" name="specialisation" id="specialisation"
+                      class="form-control form-control-alternative" placeholder="Specialisation.." [required]="true"
+                      #specialisation formControlName="specialisation" [value]="medicalStatus?.specialisation">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Description</label>
+                    <textarea name="description" id="description" class="form-control form-control-alternative"
+                      placeholder="Description.." #description formControlName="description"
+                      [value]="medicalStatus?.description"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Category <b class="text-danger">*</b></label>
+                    <select name="category" id="category" class="form-control form-control-alternative"
+                      [required]="true" #category>
+                      <option [value]="medicalStatus?.category" selected>{{medicalStatus.category}}</option>
+                      <option value="Non-Medical Practitioners">Section 1 | Non-Medical Practitioners</option>
+                      <option value="Medical Practitioners">Section 2 | Medical Practitioners</option>
+                      <option value="Low Risk">Specialty - Category 1 | Low Risk</option>
+                      <option value="Medium Risk">Specialty - Category 2 | Medium Risk</option>
+                      <option value="High Risk">Specialty - Category 3 | High Risk</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Status <b class="text-danger">*</b></label>
+                    <select name="status" id="status" class="form-control form-control-alternative" [required]="true"
+                      #status>
+                      <option [value]="medicalStatus?.status" selected>{{medicalStatus.status}}</option>
+                      <option value="None">None</option>
+                      <option value="Private">Private</option>
+                      <option value="Government with Locum / Semiretired">Government with Locum / Semiretired</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="my-4" />
+            <!-- Address -->
+            <h6 class="heading-small text-muted mb-4">Limit of Liability</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-4" id="a">
+                  <div class="form-group">
+                    <div class="mb-2">
+                      <label class="form-control-label">RM250,000.00</label>
+                      <input type="number" name="limit250k" id="limit250k" class="form-control form-control-alternative"
+                        placeholder="RM" min="0" #limit250k [value]="medicalStatus?.limit250k">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4" id="b">
+                  <div class="form-group">
+                    <div class="mb-2">
+                      <label class="form-control-label">RM500,000.00</label>
+                      <input type="number" name="limit500k" id="limit500k" class="form-control form-control-alternative"
+                        placeholder="RM" min="0" #limit500k [value]="medicalStatus?.limit500k">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4" id="c">
+                  <div class="form-group">
+                    <div class="mb-2">
+                      <label class="form-control-label">RM1,000,000.00</label>
+                      <input type="number" name="limit1m" id="limit1m" class="form-control form-control-alternative"
+                        placeholder="RM" min="0" #limit1m [value]="medicalStatus?.limit1m">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4" id="d">
+                  <div class="form-group">
+                    <div class="mb-2">
+                      <label class="form-control-label">RM1,500,000.00 </label>
+                      <input type="number" name="limit1p5m" id="limit1p5m" class="form-control form-control-alternative"
+                        placeholder="RM" min="0" #limit1p5m [value]="medicalStatus?.limit1p5m">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4" id="e">
+                  <div class="form-group">
+                    <div class="mb-2">
+                      <label class="form-control-label">RM2,000,000.00</label>
+                      <input type="number" name="limit2m" id="limit2m" class="form-control form-control-alternative"
+                        placeholder="RM" min="0" #limit2m [value]="medicalStatus?.limit2m">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4" id="f">
+                  <div class="form-group">
+                    <div class="mb-2">
+                      <label class="form-control-label">RM3,000,000.00</label>
+                      <input type="number" name="limit3m" id="limit3m" class="form-control form-control-alternative"
+                        placeholder="RM" min="0" #limit3m [value]="medicalStatus?.limit3m">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4" id="g">
+                  <div class="form-group">
+                    <div class="mb-2">
+                      <label class="form-control-label">RM5,000,000.00 </label>
+                      <input type="number" name="limit5m" id="limit5m" class="form-control form-control-alternative"
+                        placeholder="RM" min="0" #limit1p5m [value]="medicalStatus?.limit5m">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer bg-white border-0 text-center">
+            <div class="text-right">
+              <button class="btn btn-outline-primary" (click)="gotoList()">Back</button>
+              <input class="btn btn-primary" type="submit" [disabled]="!msForm" value="Update">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

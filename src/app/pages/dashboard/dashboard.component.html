@@ -1,0 +1,368 @@
+<div class="header bg-gradient-warning pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+      <div class="row">
+        <div class="col-xl-4 col-lg-6 mb-4">
+          <div class="card bg-gradient-default shadow card-stats mb-4 mb-xl-0"
+            ngbTooltip="{{totalSubmitMontly}} of {{about.targetApplicantPerMonth}}">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-white text-uppercase text-muted mb-0">Applicant Monthly Target</h5>
+                  <span class="h5 text-white font-weight-bold mb-0">{{about.targetApplicantPerMonth}}</span>
+                </div>
+                <div class="col-auto">
+                  <div *ngIf="compare1()" class="icon icon-shape bg-success text-white rounded-circle shadow">
+                    <i class="fas fa-check"></i>
+                  </div>
+                  <div *ngIf="!compare1()" class="icon icon-shape bg-primary text-white rounded-circle shadow">
+                    <i class="fas fa-check"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 mb-4">
+          <div class="card bg-gradient-default card-stats mb-4 mb-xl-0"
+            ngbTooltip="RM{{totalMonthlySale}} of RM{{about.targetMonthlySale}}">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="text-white card-title text-uppercase text-muted mb-0">Monthly Sale Target</h5>
+                  <span class="h5 text-white font-weight-bold mb-0">RM{{about.targetMonthlySale}} / Month</span>
+                </div>
+                <div class="col-auto">
+                  <div *ngIf="compare2()" class="icon icon-shape bg-success text-white rounded-circle shadow">
+                    <i class="fas  fa-check"></i>
+                  </div>
+                  <div *ngIf="!compare2()" class="icon icon-shape bg-primary text-white rounded-circle shadow">
+                    <i class="fas  fa-check"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 mb-4">
+          <div class="card bg-gradient-default card-stats mb-4 mb-xl-0"
+            ngbTooltip="RM{{totalYearlySale}} of RM{{about.targetYearlySale}}">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="text-white card-title text-uppercase text-muted mb-0">Yearly Sale Target</h5>
+                  <span class="h5 text-white font-weight-bold mb-0">RM{{about.targetYearlySale}} / Year</span>
+                </div>
+                <div class="col-auto">
+                  <div *ngIf="compare3()" class="icon icon-shape bg-success text-white rounded-circle shadow">
+                    <i class="fas  fa-check"></i>
+                  </div>
+                  <div *ngIf="!compare3()" class="icon icon-shape bg-primary text-white rounded-circle shadow">
+                    <i class="fas  fa-check"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 mb-4">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">Total Applicant Applied</h5>
+                  <span class="h2 font-weight-bold mb-0">{{totalApplicant}}</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                    <i class="fas fa-users"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 mb-4">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">Total Applicant Submitted</h5>
+                  <span class="h2 font-weight-bold mb-0">{{totalSubmit}}</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-success text-white rounded-circle shadow">
+                    <i class="fas fa-user-check"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 mb-4">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">Monthly Target Current</h5>
+                  <span
+                    class="h2 font-weight-bold mb-0">{{findMonthlyTargetCurrent(totalSubmitMontly,about.targetApplicantPerMonth)}}</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                    <i class="fas fa-bullseye"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 mb-4">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted">Total Sales</h5>
+                  <span class="h2 font-weight-bold mb-0">RM{{totalSales}}</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-pink text-white rounded-circle shadow">
+                    <i class="fas fa-dollar-sign"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 mb-4">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">Total Medical Status Added</h5>
+                  <span class="h2 font-weight-bold mb-0">{{totalMedicalStatus}}</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                    <i class="fas fa-ambulance"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 mb-4">
+          <div class="card-stats mb-4 mb-xl-0">
+            <div *ngIf="!empty" class="card card-lift--hover">
+              <div class="card-body">
+                <a href="javascript:void(0)" (click)="open(classic1,'' , '')">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Favorite Medical Status</h5>
+                      <span class="h2 font-weight-bold mb-0">{{favMs.specialisation}}</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                        <i class="fas fa-heart"></i>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div *ngIf="empty" class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Favorite Medical Status</h5>
+                    <span class="h2 font-weight-bold mb-0">-</span>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                      <i class="fas fa-heart"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ng-template #classic1 let-c="close" let-d="dismiss">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="modal-title-default">Specialisation: {{favMs.specialisation}}</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <h2>
+                  <ul>
+                    <li>
+                      Category:
+                      <ul>
+                        <li>{{favMs.category?.split('|')[0]}}</li>
+                        <li>{{favMs.category?.split('|')[1]}}</li>
+                      </ul>
+                    </li>
+                    <li>Status: {{favMs.status}}</li>
+                    <li>Total : {{totalFav}}</li>
+                  </ul>
+                </h2>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal"
+                  (click)="c('Close click')">Close</button>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="mb-5">
+    <div class="col-xl-12">
+      <div class="row">
+        <div class="col-xl-8">
+          <div class="card bg-gradient-dark shadow">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h2 class="text-white mb-0">Weekly Customer Applied</h2>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="chart">
+                <canvas id="chart-sales" class="chart-canvas"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          <div class="card bg-gradient-default shadow">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h2 class="text-white mb-0">Customer Applied</h2>
+                </div>
+              </div>
+            </div>
+            <div class="card-body card-lift--hover">
+              <div class="chart">
+                <canvas class=" chart-canvas" id="chart-pie"> </canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-12 mb-5">
+    <div class="card shadow">
+      <div class="card-header border-0">
+        <div class="row align-items-center">
+          <div class="col">
+            <h3 class="mb-0">Medical Status List</h3>
+          </div>
+          <div class="col text-right">
+            <a href="javascript:void(0)" class="btn btn-sm btn-primary" (click)="goto(1)">See all</a>
+          </div>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <!-- Projects table -->
+        <table class="table align-items-center table-flush">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">SPECIALISATION</th>
+              <th scope="col">STATUS</th>
+              <th scope="col">UPDATED AT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ms of ms5">
+              <th scope="row">
+                {{ms.specialisation}}
+              </th>
+              <td>
+                <div>
+                  {{ms.status}}
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{ms.updatedAt?.split(' ')[1]}}
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-12">
+    <div class="card shadow">
+      <div class="card-header border-0">
+        <div class="row align-items-center">
+          <div class="col">
+            <h3 class="mb-0">Latest Application</h3>
+          </div>
+          <div class="col text-right">
+            <a href="javascript:void(0)" class="btn btn-sm btn-primary" (click)="goto(2)">See all</a>
+          </div>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <!-- Projects table -->
+        <table class="table align-items-center table-flush">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">IC</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Submit Status</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let applicant of app5">
+              <th scope="row">
+                {{applicant.applicantIc}}
+              </th>
+              <td>
+                <span class="badge badge-dot mr-4">
+                  <i class="bg-warning"></i> {{applicant.applicantName}}
+                </span>
+              </td>
+              <td>
+                <div>
+                  <a href="javascript:void(0)"
+                    ngbTooltip="Click to email {{applicant.applicantName?.split(' ')[0] | titlecase}}"
+                    (click)="mailto(applicant.applicantEmail)">{{applicant.applicantEmail}}</a>
+                </div>
+              </td>
+              <td>
+                <div *ngIf="applicant.submitStatus=='0'">
+                  <b class="text-danger">Not Submit</b>
+                </div>
+                <div *ngIf="applicant.submitStatus=='1'">
+                  <b class="text-success">Submitted</b>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <button class="btn btn-outline-info btn-sm" type="button" (click)="gotoDetail(applicant)">
+                    Details
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

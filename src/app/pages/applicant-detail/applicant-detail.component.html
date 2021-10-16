@@ -1,0 +1,246 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+  style="min-height: 450px; background-image: url(assets/img/profile-cover2.jpg); background-size: cover; background-position: center top;">
+  <span class="mask bg-gradient-primary opacity-7"></span>
+  <div class="container-fluid d-flex align-items-center">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="display-1 text-white"><b>Applicant's</b> Detail</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">
+                Applicant's Detail |
+                <a href="javascript:void(0)" (click)="pdf(applicant.$key)" class="btn btn-sm btn-warning">Print
+                  Form</a>
+              </h3>
+            </div>
+            <div class="col-4 text-right">
+              <div *ngIf="applicant.submitStatus=='0'"
+                ngbTooltip="Click if the applicant already submit the details via email.">
+                <button class="btn btn-sm btn-primary" (click)="updateStatus()">
+                  Set status to 'submitted'
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="pl-lg-4">
+            <h6 class="heading-small text-muted mb-4">
+              Application for Takaful Cover
+              <span *ngIf="applicant.submitStatus=='0'"><b class="text-danger ">- Not Submit</b></span>
+              <span *ngIf="applicant.submitStatus=='1'"><b class="text-success">- Submitted</b></span>
+            </h6>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label"><b>Application ID</b></label>
+                  <h5>{{applicant.$key}}</h5>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label"><b>Period of Takaful</b></label>
+                  <h5 *ngIf="period">{{applicant.dateFrom}} to {{applicant.dateTo}}</h5>
+                  <!-- <h5 *ngIf="!period">N/A</h5> -->
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label"><b>Limit of Liability Required</b></label>
+                  <h5 *ngIf="limit">{{applicant.limit1}}</h5>
+                  <h5 *ngIf="limit">{{applicant.limit2}}</h5>
+                  <h5 *ngIf="!limit">N/A</h5>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label"><b>Retroactive Date</b></label>
+                  <h5>{{toDate(applicant.dateRetroactive)}}</h5>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <h6 class="heading-small text-muted mb-4">1. Details of Applicant</h6>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label"><b>Name</b></label>
+                  <h5>{{applicant.applicantName}}</h5>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label"><b>IC</b></label>
+                  <h5>{{applicant.applicantIc}}</h5>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label"><b>Gender</b></label>
+                  <h5>{{applicant.applicantGender}}</h5>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label"><b>Phone number</b></label>
+                  <h5>{{applicant.applicantPhoneNumber}}</h5>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label"><b>Correspondence address</b></label>
+                  <h5>{{applicant.applicantCorrespondenceAddress}}</h5>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label"><b>Primary practice location</b></label>
+                  <h5>{{applicant.applicantPrimaryPracticeLocation}}</h5>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label"><b>Email address</b></label>
+                  <h5>
+                    <a href="javascript:void(0)"
+                      ngbTooltip="Click to email {{applicant.applicantName?.split(' ')[0] | titlecase}}"
+                      (click)="mailto(applicant.applicantEmail)">{{applicant.applicantEmail}}</a>
+                  </h5>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label"><b>Licensing / Registration Body</b></label>
+                  <h5>{{applicant.applicantLicensing}}</h5>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label"><b>Registration Number</b></label>
+                  <h5>{{applicant.applicantRegistrationNumber}}</h5>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label"><b>Registration Date</b></label>
+                  <h5>{{toDate(applicant.dateRegistration)}}</h5>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label"><b>Date of first Registration</b></label>
+                  <h5>{{toDate(applicant.dateFirstRegistration)}}</h5>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <h6 class="heading-small text-muted mb-4">2. Details of Healthcare Services Business</h6>
+            <div class="row">
+              <div class="col-lg-3 text-center" *ngFor="let ams of applicant_medicalStatusList">
+                <div class="card bg-gradient-primary ">
+                  <div class="card-body">
+                    <h4 class="text-white">{{getSpecialisation(ams.medicalStatusId)}}</h4>
+                    <h5 class="text-white"><b>({{ams.percentage}}%)</b></h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <h6 class="heading-small text-muted mb-4">3. Takaful History</h6>
+            <div class="row mb-4">
+              <div class="col-lg-10">
+                <h5>Do you currently hold medical malpractice Takaful? If YES, please provide details.</h5>
+              </div>
+              <div class="col-lg-2">
+                <h5>{{applicant.history1}}</h5>
+              </div>
+            </div>
+            <div class="row mb-4">
+              <div class="col-lg-10">
+                <h5>
+                  Have you ever had any application for medical malpractice Takaful refused, or had any medical
+                  malpractice Takaful coverage rescinded or cancelled? If YES, please provide details on a separate
+                  sheet, noting the Section number.
+                </h5>
+              </div>
+              <div class="col-lg-2">
+                <h5>{{applicant.history2}}</h5>
+              </div>
+            </div>
+            <hr>
+            <h6 class="heading-small text-muted mb-4">4. Claims Experience</h6>
+            <div class="row mb-4">
+              <div class="col-lg-10">
+                <h5>Have any claims ever been made, or lawsuits been brought against you?</h5>
+              </div>
+              <div class="col-lg-2">
+                <h5>{{applicant.experience1}}</h5>
+              </div>
+            </div>
+            <div class="row mb-4">
+              <div class="col-lg-10">
+                <h5>
+                  Are you aware of any errors, omissions, offences, circumstances or allegations which might result in a
+                  claim being made against you?
+                </h5>
+              </div>
+              <div class="col-lg-2">
+                <h5>{{applicant.experience2}}</h5>
+              </div>
+            </div>
+            <div class="row mb-4">
+              <div class="col-lg-10">
+                <h5>Have you ever been the subject of disciplinary action or investigation by any authority or regulator
+                  or professional body?</h5>
+              </div>
+              <div class="col-lg-2">
+                <h5>{{applicant.experience3}}</h5>
+              </div>
+            </div>
+            <div class="row mb-4">
+              <div class="col-lg-10">
+                <h5>
+                  Have you ever been the subject of a criminal investigation or had criminal charges brought against
+                  you? For the purposes of this question, please disregard traffic or minor motor vehicle licensing
+                  offences.
+                </h5>
+              </div>
+              <div class="col-lg-2">
+                <h5>{{applicant.experience4}}</h5>
+              </div>
+            </div>
+            <h5 class="mt-5 mb-2 text-right">
+              Date apply: <b>{{applicant.createdAt.slice(-10)}}</b>
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-right mt-3">
+    <button class="btn btn-outline-primary" (click)="gotoList()">Back</button>
+    <button class="btn btn-outline-danger" (click)="deleteApplicant(applicant)">Delete</button>
+  </div>
+</div>

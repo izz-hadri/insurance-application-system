@@ -1,0 +1,86 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+  style="min-height: 450px; background-image: url(assets/img/profile-cover1.jpg); background-size: cover; background-position: center top;">
+  <span class="mask bg-gradient-primary opacity-7"></span>
+  <div class="container-fluid d-flex align-items-center">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="display-1 text-white">Applicant <b>List</b></h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MEDICAL STATUS LIST -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row">
+            <div class="col-lg-6">
+              <input type="text" name="search" id="search" class="form-control form-control-alternative"
+                placeholder="Search" (keyup)="searchAny()">
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table id="myTable" class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr id='tableHeader'>
+                <th scope="col">IC</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Submit Status</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let applicant of applicantList">
+                <td>
+                  {{applicant.applicantIc}}
+                </td>
+                <td>
+                  <span class="badge badge-dot mr-4">
+                    <i class="bg-warning"></i> {{applicant.applicantName}}
+                  </span>
+                </td>
+                <td>
+                  <div>
+                    <a href="javascript:void(0)"
+                      ngbTooltip="Click to email {{applicant.applicantName?.split(' ')[0] | titlecase}}"
+                      (click)="mailto(applicant.applicantEmail)">{{applicant.applicantEmail}}</a>
+                  </div>
+                </td>
+                <td>
+                  <div *ngIf="applicant.submitStatus=='0'">
+                    <b class="text-danger">Not Submit</b>
+                  </div>
+                  <div *ngIf="applicant.submitStatus=='1'">
+                    <b class="text-success">Submitted</b>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <button class=" btn btn-outline-info btn-icon-only rounded-circle" type="button" placement="top"
+                      ngbTooltip="View Details" (click)="gotoDetail(applicant)">
+                      <span class="btn-inner--icon"><i class="fas fa-info"></i></span>
+                    </button>
+                    <button class="btn btn-outline-warning btn-icon-only rounded-circle" type="button" placement="top"
+                      ngbTooltip="Delete" (click)="deleteApplicant(applicant)">
+                      <span class="btn-inner--icon"><i class="ni ni-fat-delete"></i></span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer py-4 text-right">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /MEDICAL STATUS LIST -->
