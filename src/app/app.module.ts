@@ -33,13 +33,13 @@ import { FirebaseService } from './services/firebase.service';
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(
       {
-        apiKey: "AIzaSyC2rW6daHV4FrByh-bAzM6OsfgErwgBlyY",
-        authDomain: "mautakaful.firebaseapp.com",
-        databaseURL: "https://mautakaful-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "mautakaful",
-        storageBucket: "mautakaful.appspot.com",
-        messagingSenderId: "100931829623",
-        appId: "1:100931829623:web:636611e09821b1b2b66b72"
+        apiKey: "",
+        authDomain: "",
+        databaseURL: "",
+        projectId: "",
+        storageBucket: "",
+        messagingSenderId: "",
+        appId: ""
       }
     )],
   declarations: [
